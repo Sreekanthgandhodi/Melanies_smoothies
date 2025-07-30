@@ -40,4 +40,5 @@ if time_to_insert:
         st.warning("Please enter your name and select at least one ingredient.")
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
+#st.text(smoothiefroot_response.json())
+sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=true)
