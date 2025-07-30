@@ -45,4 +45,6 @@ if time_to_insert:
         st.success(f"Your smoothie is ordered! 🥤: {name_on_order}", icon="✅")
     else:
         st.warning("Please enter your name and select at least one ingredient.")
-
+import requests
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
