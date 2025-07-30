@@ -29,17 +29,20 @@ time_to_insert = st.button("Submit Order")
 
 time_to_insert = st.button("Submit Order")
 
+
+time_to_insert = st.button("Submit Order")
+
 if time_to_insert:
-    
-if ingredients_list and name_on_order:
-    ingredients_string = ' '.join(ingredients_list)
-    my_insert_stmt = f"""
-        INSERT INTO smoothies.public.orders(ingredients, name_on_order)
-        VALUES ('{ingredients_string}', '{name_on_order}')
-    """
-    if st.button("Submit Order"):
+    if ingredients_list and name_on_order:
+        ingredients_string = ' '.join(ingredients_list)
+        st.write("Ingredients selected:", ingredients_string)
+
+        my_insert_stmt = f"""
+            INSERT INTO smoothies.public.orders(ingredients, name_on_order)
+            VALUES ('{ingredients_string}', '{name_on_order}')
+        """
         session.sql(my_insert_stmt).collect()
         st.success(f"Your smoothie is ordered! 🥤: {name_on_order}", icon="✅")
-
     else:
         st.warning("Please enter your name and select at least one ingredient.")
+
