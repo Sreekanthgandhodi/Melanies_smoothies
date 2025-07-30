@@ -2,7 +2,7 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 # Write directly to the app
-st.title(f"My Parents Healthy New Dinner")
+st.title("My Parents Healthy New Dinner")
 st.write(
   """Replace this example with your own code!
   **And if you're new to Streamlit,** check
@@ -21,7 +21,7 @@ if ingredients_list:
          ingredients_string=''
 for fruit_chosen in ingredients_list:
     ingredients_string += fruit_chosen+' '
-#st.write(ingredients_string)
+st.write(ingredients_string)
  
 my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
