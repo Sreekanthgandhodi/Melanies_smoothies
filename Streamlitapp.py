@@ -2,6 +2,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 # Write directly to the app
 st.title("My Parents Healthy New Dinner")
 st.write(
@@ -38,7 +39,6 @@ if time_to_insert:
         st.success(f"Your smoothie is ordered! 🥤: {name_on_order}", icon="✅")
     else:
         st.warning("Please enter your name and select at least one ingredient.")
-import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 #st.text(smoothiefroot_response.json())
 sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=true)
