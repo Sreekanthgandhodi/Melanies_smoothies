@@ -25,12 +25,8 @@ if ingredients_list:
         ingredients_string += fruit_chosen+' '
         st.subheader(fruit_chosen+'Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-        #sf_df = st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
-
-fruit_endpoint = f"https://my.smoothiefroot.com/api/fruit/{fruit_chosen.lower()}"
-response = requests.get(fruit_endpoint)
-        
-if response.status_code == 200:
+        sf_df = st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
+if smoothiefroot_response.status_code == 200:
     try:
         data = response.json()
         st.dataframe(data, use_container_width=True)
