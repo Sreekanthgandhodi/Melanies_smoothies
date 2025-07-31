@@ -26,6 +26,11 @@ if ingredients_list:
         st.subheader(fruit_chosen+'Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
         sf_df = st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
+      
+if smoothiefroot_response.status_code == 200:
+    try:
+        data = smoothiefroot_response.json()
+
 #st.write(ingredients_string)
 time_to_insert = st.button("Submit Order")
 if time_to_insert:
