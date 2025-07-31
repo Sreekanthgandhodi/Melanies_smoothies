@@ -18,7 +18,7 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('Fruit_Name'),col('Search_on'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 #st.stop()
-#pd_df = my_dataframe.to_pandas()
+pd_df = my_dataframe.to_pandas()
 ingredients_list= st.multiselect('choose upto 5 incrediants:',my_dataframe,max_selections=5)
 if ingredients_list:
     ingredients_string=''
