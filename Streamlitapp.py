@@ -26,17 +26,6 @@ if ingredients_list:
         st.subheader(fruit_chosen+'Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
         sf_df = st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
-if smoothiefroot_response.status_code == 200:
-    try:
-        data = response.json()
-        st.dataframe(data, use_container_width=True)
-    except ValueError:
-        st.error(f"Invalid JSON received for {fruit_chosen}.")
-        st.text("Raw response:\n" + response.text)  # Show raw response for debugging
-else:
-    st.error("Failed to fetch data for {fruit_chosen}. Status code: {response.status_code}")
-    st.text("Raw response:\n" + response.text)
-
 #st.write(ingredients_string)
 time_to_insert = st.button("Submit Order")
 if time_to_insert:
