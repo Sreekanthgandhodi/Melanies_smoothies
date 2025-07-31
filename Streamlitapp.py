@@ -30,6 +30,14 @@ if ingredients_list:
 if smoothiefroot_response.status_code == 200:
     try:
         data = smoothiefroot_response.json()
+        st.dataframe(data, use_container_width=True)
+    except ValueError:
+        st.error(f"Invalid JSON received for {fruit_chosen}.")
+        st.text("Raw response:\n" + smoothiefroot_response.text)
+else:
+    st.error(f"Failed to fetch data for {fruit_chosen}. Status code: {smoothiefroot_response.status_code}")
+    st.text("Raw response:\n" + smoothiefroot_response.text)
+
 
 #st.write(ingredients_string)
 time_to_insert = st.button("Submit Order")
